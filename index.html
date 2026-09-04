@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16002e">
+<meta name="description" content="श्री कृष्ण जन्माष्टमी - एक सुंदर डिजिटल उत्सव">
+<title>श्री कृष्ण जन्माष्टमी 🦚</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at 50% 25%,#54248f 0%,#210044 35%,#080014 100%);
+}
+
+/* ---------- Background ---------- */
+
+.sky{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:white;
+  box-shadow:0 0 10px white;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.6)}
+  to{opacity:1;transform:scale(1.5)}
+}
+
+/* ---------- Main App ---------- */
+
+.app{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+}
+
+.card{
+  position:relative;
+  width:min(920px,100%);
+  min-height:650px;
+  padding:50px 25px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:35px;
+  background:rgba(20,0,40,.48);
+  backdrop-filter:blur(18px);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.55),
+    inset 0 0 40px rgba(255,255,255,.04);
+  overflow:hidden;
+}
+
+/* ---------- Glow ---------- */
+
+.glow{
+  position:absolute;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background:#8b4dff;
+  filter:blur(100px);
+  opacity:.28;
+  top:-100px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* ---------- Peacock Feather ---------- */
+
+.feather{
+  position:relative;
+  margin:0 auto 20px;
+  width:100px;
+  height:145px;
+  transform:rotate(-8deg);
+  animation:float 3s ease-in-out infinite;
+}
+
+.feather::before{
+  content:"";
+  position:absolute;
+  left:48px;
+  top:0;
+  width:10px;
+  height:145px;
+  border-radius:50%;
+  background:linear-gradient(#b8872b,#f1d46a);
+  transform:rotate(8deg);
+}
+
+.feather::after{
+  content:"🦚";
+  position:absolute;
+  font-size:90px;
+  left:0;
+  top:5px;
+  filter:drop-shadow(0 0 15px #48d9ff);
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-8deg)}
+  50%{transform:translateY(-15px) rotate(4deg)}
+}
+
+/* ---------- Heading ---------- */
+
+.small-title{
+  font-size:14px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  opacity:.75;
+  margin-bottom:10px;
+}
+
+h1{
+  font-size:clamp(38px,8vw,78px);
+  line-height:1.05;
+  font-weight:800;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #ffd86b,
+    #fff,
+    #b9eaff,
+    #fff
+  );
+  background-size:300%;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 5s linear infinite;
+  text-shadow:0 0 35px rgba(255,214,91,.2);
+}
+
+@keyframes shine{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+.subtitle{
+  margin:18px auto;
+  max-width:650px;
+  font-size:18px;
+  line-height:1.7;
+  color:#eee2ff;
+}
+
+/* ---------- Krishna ---------- */
+
+.krishna{
+  margin:25px auto;
+  font-size:90px;
+  filter:drop-shadow(0 0 25px #57c8ff);
+  animation:krishna 3s ease-in-out infinite;
+}
+
+@keyframes krishna{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-10px) scale(1.04)}
+}
+
+/* ---------- Buttons ---------- */
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+  color:#21002f;
+  font-weight:800;
+  font-size:16px;
+  padding:14px 24px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ffd86b,#fff0a7);
+  box-shadow:0 8px 25px rgba(255,216,107,.25);
+  transition:.25s;
+}
+
+button:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+.secondary{
+  color:white;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:none;
+}
+
+/* ---------- Diyas ---------- */
+
+.diyas{
+  position:absolute;
+  bottom:20px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:space-around;
+  font-size:45px;
+  opacity:.9;
+}
+
+.diya{
+  animation:diya 1.5s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 12px orange);
+}
+
+@keyframes diya{
+  from{transform:scale(1) rotate(-2deg)}
+  to{transform:scale(1.08) rotate(2deg)}
+}
+
+/* ---------- Floating Flowers ---------- */
+
+.flower{
+  position:fixed;
+  top:-40px;
+  font-size:25px;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:.1;
+  }
+}
+
+/* ---------- Message ---------- */
+
+.message{
+  margin-top:25px;
+  min-height:30px;
+  font-size:20px;
+  font-weight:700;
+  color:#ffe28a;
+}
+
+/* ---------- Info ---------- */
+
+.info{
+  margin-top:35px;
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,.12);
+  font-size:14px;
+  opacity:.75;
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:600px){
+  .app{
+    padding:12px;
+  }
+
+  .card{
+    min-height:690px;
+    padding:35px 18px;
+    border-radius:28px;
+  }
+
+  .feather{
+    transform:scale(.8) rotate(-8deg);
+    margin-bottom:0;
+  }
+
+  h1{
+    font-size:43px;
+  }
+
+  .subtitle{
+    font-size:16px;
+  }
+
+  .krishna{
+    font-size:70px;
+  }
+
+  .diyas{
+    font-size:32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky"></div>
+
+<main class="app">
+  <section class="card">
+
+    <div class="glow"></div>
+
+    <div class="feather"></div>
+
+    <div class="small-title">
+      🪷 दिव्य उत्सव 🪷
+    </div>
+
+    <h1>
+      श्री कृष्ण<br>
+      जन्माष्टमी
+    </h1>
+
+    <p class="subtitle">
+      प्रेम, भक्ति और आनंद के इस पावन पर्व पर
+      भगवान श्री कृष्ण का आशीर्वाद आपके जीवन को
+      खुशियों से भर दे। 💙
+    </p>
+
+    <div class="krishna">
+      🪈
+    </div>
+
+    <div class="buttons">
+
+      <button onclick="celebrate()">
+        ✨ उत्सव मनाएँ
+      </button>
+
+      <button class="secondary" onclick="showMessage()">
+        💙 एक संदेश
+      </button>
+
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <div class="info">
+      🦚 राधे राधे • जय श्री कृष्ण 🦚
+    </div>
+
+    <div class="diyas">
+      <div class="diya">🪔</div>
+      <div class="diya">🪔</div>
+      <div class="diya">🪔</div>
+      <div class="diya">🪔</div>
+      <div class="diya">🪔</div>
+    </div>
+
+  </section>
+</main>
+
+<script>
+
+/* ---------- Stars ---------- */
+
+const sky = document.getElementById("sky");
+
+for(let i=0;i<100;i++){
+
+  const star=document.createElement("div");
+
+  star.className="star";
+
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+
+  star.style.animationDelay=(Math.random()*3)+"s";
+
+  const size=Math.random()*3+1;
+
+  star.style.width=size+"px";
+  star.style.height=size+"px";
+
+  sky.appendChild(star);
+}
+
+
+/* ---------- Flowers ---------- */
+
+const flowers=["🌸","🌺","🌼","🪷","✨"];
+
+function createFlower(){
+
+  const flower=document.createElement("div");
+
+  flower.className="flower";
+
+  flower.innerHTML=
+    flowers[Math.floor(Math.random()*flowers.length)];
+
+  flower.style.left=Math.random()*100+"%";
+
+  flower.style.animationDuration=
+    (Math.random()*5+5)+"s";
+
+  flower.style.fontSize=
+    (Math.random()*18+18)+"px";
+
+  document.body.appendChild(flower);
+
+  setTimeout(()=>{
+    flower.remove();
+  },10000);
+}
+
+setInterval(createFlower,700);
+
+
+/* ---------- Celebration ---------- */
+
+function celebrate(){
+
+  const message=document.getElementById("message");
+
+  message.innerHTML="🦚 जय श्री कृष्ण! 🦚";
+
+  for(let i=0;i<90;i++){
+
+    const particle=document.createElement("div");
+
+    particle.innerHTML=
+      ["✨","🌸","🪷","💙","🦚","⭐"]
+      [Math.floor(Math.random()*6)];
+
+    particle.style.position="fixed";
+
+    particle.style.left="50%";
+    particle.style.top="50%";
+
+    particle.style.fontSize=
+      (Math.random()*20+12)+"px";
+
+    particle.style.pointerEvents="none";
+
+    particle.style.zIndex="9999";
+
+    document.body.appendChild(particle);
+
+    const angle=Math.random()*Math.PI*2;
+    const distance=Math.random()*350+100;
+
+    const x=Math.cos(angle)*distance;
+    const y=Math.sin(angle)*distance;
+
+    particle.animate([
+      {
+        transform:"translate(-50%,-50%) scale(1)",
+        opacity:1
+      },
+      {
+        transform:
+          `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.2)`,
+        opacity:0
+      }
+    ],{
+      duration:1200+Math.random()*700,
+      easing:"cubic-bezier(.2,.8,.3,1)"
+    });
+
+    setTimeout(()=>{
+      particle.remove();
+    },2200);
+  }
+}
+
+
+/* ---------- Message ---------- */
+
+function showMessage(){
+
+  const messages=[
+    "💙 जहाँ प्रेम है, वहाँ श्री कृष्ण हैं।",
+    "🦚 मुस्कुराते रहिए और राधे राधे कहते रहिए।",
+    "🪷 भक्ति में ही सच्चा आनंद है।",
+    "✨ श्री कृष्ण आपके जीवन में सुख और शांति लाएँ।",
+    "🪈 प्रेम से बोलो — जय श्री कृष्ण!"
+  ];
+
+  const box=document.getElementById("message");
+
+  box.innerHTML=
+    messages[Math.floor(Math.random()*messages.length)];
+}
+
+
+/* ---------- Click Ripple ---------- */
+
+document.addEventListener("click",(e)=>{
+
+  const ripple=document.createElement("div");
+
+  ripple.style.position="fixed";
+  ripple.style.left=e.clientX+"px";
+  ripple.style.top=e.clientY+"px";
+  ripple.style.width="10px";
+  ripple.style.height="10px";
+  ripple.style.border="2px solid white";
+  ripple.style.borderRadius="50%";
+  ripple.style.pointerEvents="none";
+  ripple.style.zIndex="9999";
+
+  document.body.appendChild(ripple);
+
+  ripple.animate([
+    {
+      transform:"translate(-50%,-50%) scale(1)",
+      opacity:.8
+    },
+    {
+      transform:"translate(-50%,-50%) scale(8)",
+      opacity:0
+    }
+  ],{
+    duration:600
+  });
+
+  setTimeout(()=>ripple.remove(),600);
+
+});
+
+</script>
+
+</body>
+  </html>
