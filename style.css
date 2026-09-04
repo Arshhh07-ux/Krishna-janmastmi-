@@ -1,0 +1,376 @@
+/* =================================
+   CINEMATIC KRISHNA CENTER ART
+================================= */
+
+.krishna-art {
+  position: relative;
+
+  width: 300px;
+  height: 340px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  filter:
+    drop-shadow(0 0 25px rgba(255, 207, 76, .18));
+
+  animation:
+    krishnaFloat 5s ease-in-out infinite;
+}
+
+/* Golden aura */
+
+.krishna-glow {
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 215, 92, .28),
+      rgba(255, 215, 92, .08) 45%,
+      transparent 70%
+    );
+
+  filter: blur(3px);
+
+  animation:
+    auraPulse 4s ease-in-out infinite;
+}
+
+
+/* Head */
+
+.krishna-head {
+  position: absolute;
+
+  width: 72px;
+  height: 82px;
+
+  top: 80px;
+
+  border-radius:
+    48% 52% 45% 45%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #16265c,
+      #07102f
+    );
+
+  z-index: 5;
+}
+
+
+/* Hair */
+
+.krishna-hair {
+  position: absolute;
+
+  width: 105px;
+  height: 95px;
+
+  top: 65px;
+
+  border-radius:
+    55% 45% 40% 50%;
+
+  background:
+    radial-gradient(
+      circle at 60% 30%,
+      #243b83,
+      #050b24 65%
+    );
+
+  transform:
+    rotate(-12deg);
+
+  z-index: 4;
+}
+
+
+/* Body */
+
+.krishna-body {
+  position: absolute;
+
+  width: 125px;
+  height: 175px;
+
+  top: 145px;
+
+  border-radius:
+    48% 48% 35% 35%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1c347a,
+      #07102f 70%
+    );
+
+  z-index: 3;
+}
+
+
+/* Shoulder glow */
+
+.krishna-body::before {
+  content: "";
+
+  position: absolute;
+
+  width: 145px;
+  height: 45px;
+
+  left: -10px;
+  top: 10px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(38, 75, 165, .25);
+
+  filter: blur(8px);
+}
+
+
+/* Arms */
+
+.krishna-arm {
+  position: absolute;
+
+  width: 100px;
+  height: 22px;
+
+  top: 158px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b153e,
+      #233d86
+    );
+
+  z-index: 6;
+}
+
+.arm-left {
+  left: 55px;
+
+  transform:
+    rotate(18deg);
+}
+
+.arm-right {
+  right: 55px;
+
+  transform:
+    rotate(-18deg);
+}
+
+
+/* Flute */
+
+.krishna-flute {
+  position: absolute;
+
+  width: 190px;
+  height: 12px;
+
+  top: 162px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a96b13,
+      #ffe28a,
+      #c88921,
+      #fff0a7
+    );
+
+  box-shadow:
+    0 0 14px rgba(255, 211, 85, .45);
+
+  transform:
+    rotate(-8deg);
+
+  z-index: 8;
+}
+
+
+/* Flute holes */
+
+.krishna-flute span {
+  position: absolute;
+
+  top: 3px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #4b2b08;
+}
+
+.krishna-flute span:nth-child(1) {
+  left: 55px;
+}
+
+.krishna-flute span:nth-child(2) {
+  left: 78px;
+}
+
+.krishna-flute span:nth-child(3) {
+  left: 101px;
+}
+
+.krishna-flute span:nth-child(4) {
+  left: 124px;
+}
+
+
+/* Peacock feather */
+
+.feather {
+  position: absolute;
+
+  width: 32px;
+  height: 115px;
+
+  top: 10px;
+  left: 142px;
+
+  border-radius:
+    60% 40% 60% 40%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #35a9a2,
+      #18568c,
+      #14346c
+    );
+
+  transform:
+    rotate(18deg);
+
+  box-shadow:
+    0 0 20px rgba(45, 173, 190, .3);
+
+  z-index: 10;
+}
+
+
+/* Feather eye */
+
+.feather-eye {
+  position: absolute;
+
+  width: 21px;
+  height: 34px;
+
+  top: 25px;
+  left: 5px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffd85d 0 18%,
+      #164f91 20% 43%,
+      #20a8a0 45% 65%,
+      transparent 67%
+    );
+}
+
+
+/* Lotus */
+
+.lotus {
+  position: absolute;
+
+  bottom: 0;
+
+  font-size: 48px;
+
+  filter:
+    drop-shadow(
+      0 0 15px
+      rgba(255, 170, 190, .35)
+    );
+
+  animation:
+    lotusGlow 3s ease-in-out infinite;
+}
+
+
+/* Animations */
+
+@keyframes krishnaFloat {
+
+  0%, 100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-10px);
+  }
+
+}
+
+@keyframes auraPulse {
+
+  0%, 100% {
+    transform: scale(.95);
+    opacity: .7;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+}
+
+@keyframes lotusGlow {
+
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .krishna-art {
+    width: 260px;
+    height: 300px;
+
+    transform: scale(.9);
+  }
+
+  }
