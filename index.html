@@ -1,555 +1,1109 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#16002e">
-<meta name="description" content="श्री कृष्ण जन्माष्टमी - एक सुंदर डिजिटल उत्सव">
-<title>श्री कृष्ण जन्माष्टमी 🦚</title>
+  <meta charset="UTF-8">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-html{
-  scroll-behavior:smooth;
-}
+  <meta name="theme-color" content="#070b22">
 
-body{
-  min-height:100vh;
-  overflow-x:hidden;
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-  color:white;
-  background:
-    radial-gradient(circle at 50% 25%,#54248f 0%,#210044 35%,#080014 100%);
-}
+  <meta name="description"
+        content="श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ — प्रेम, भक्ति और आनंद से भरा पावन पर्व।">
 
-/* ---------- Background ---------- */
+  <link rel="manifest" href="./manifest.webmanifest">
 
-.sky{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-}
+  <link rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="./icon-192.png">
 
-.star{
-  position:absolute;
-  width:3px;
-  height:3px;
-  border-radius:50%;
-  background:white;
-  box-shadow:0 0 10px white;
-  animation:twinkle 2s infinite alternate;
-}
+  <title>श्री कृष्ण जन्माष्टमी 🦚</title>
 
-@keyframes twinkle{
-  from{opacity:.2;transform:scale(.6)}
-  to{opacity:1;transform:scale(1.5)}
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* ---------- Main App ---------- */
+    html {
+      scroll-behavior: smooth;
+    }
 
-.app{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px;
-}
+    body {
+      font-family:
+        "Noto Sans Devanagari",
+        "Mangal",
+        system-ui,
+        sans-serif;
 
-.card{
-  position:relative;
-  width:min(920px,100%);
-  min-height:650px;
-  padding:50px 25px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:35px;
-  background:rgba(20,0,40,.48);
-  backdrop-filter:blur(18px);
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.55),
-    inset 0 0 40px rgba(255,255,255,.04);
-  overflow:hidden;
-}
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          #17275f 0%,
+          #0b1235 35%,
+          #050714 75%,
+          #02030a 100%
+        );
 
-/* ---------- Glow ---------- */
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-.glow{
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:#8b4dff;
-  filter:blur(100px);
-  opacity:.28;
-  top:-100px;
-  left:50%;
-  transform:translateX(-50%);
-}
+    /* =========================
+       LOADING SCREEN
+    ========================== */
 
-/* ---------- Peacock Feather ---------- */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
 
-.feather{
-  position:relative;
-  margin:0 auto 20px;
-  width:100px;
-  height:145px;
-  transform:rotate(-8deg);
-  animation:float 3s ease-in-out infinite;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
 
-.feather::before{
-  content:"";
-  position:absolute;
-  left:48px;
-  top:0;
-  width:10px;
-  height:145px;
-  border-radius:50%;
-  background:linear-gradient(#b8872b,#f1d46a);
-  transform:rotate(8deg);
-}
+      background:
+        radial-gradient(circle, #162967, #03040c 75%);
 
-.feather::after{
-  content:"🦚";
-  position:absolute;
-  font-size:90px;
-  left:0;
-  top:5px;
-  filter:drop-shadow(0 0 15px #48d9ff);
-}
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
 
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(-8deg)}
-  50%{transform:translateY(-15px) rotate(4deg)}
-}
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-/* ---------- Heading ---------- */
+    .loader-feather {
+      font-size: 65px;
+      animation: float 2s ease-in-out infinite;
+    }
 
-.small-title{
-  font-size:14px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  opacity:.75;
-  margin-bottom:10px;
-}
+    .loader-text {
+      margin-top: 18px;
+      font-size: 20px;
+      color: #ffd76a;
+      letter-spacing: 2px;
+    }
 
-h1{
-  font-size:clamp(38px,8vw,78px);
-  line-height:1.05;
-  font-weight:800;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #ffd86b,
-    #fff,
-    #b9eaff,
-    #fff
-  );
-  background-size:300%;
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:shine 5s linear infinite;
-  text-shadow:0 0 35px rgba(255,214,91,.2);
-}
+    .loader-line {
+      width: 150px;
+      height: 3px;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255,255,255,.15);
+    }
 
-@keyframes shine{
-  0%{background-position:0%}
-  100%{background-position:300%}
-}
+    .loader-line::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 100%;
+      background: #ffd45c;
+      animation: loading 1.2s infinite;
+    }
 
-.subtitle{
-  margin:18px auto;
-  max-width:650px;
-  font-size:18px;
-  line-height:1.7;
-  color:#eee2ff;
-}
+    @keyframes loading {
+      from {
+        transform: translateX(-120%);
+      }
+      to {
+        transform: translateX(300%);
+      }
+    }
 
-/* ---------- Krishna ---------- */
+    /* =========================
+       PARTICLES
+    ========================== */
 
-.krishna{
-  margin:25px auto;
-  font-size:90px;
-  filter:drop-shadow(0 0 25px #57c8ff);
-  animation:krishna 3s ease-in-out infinite;
-}
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-@keyframes krishna{
-  0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-10px) scale(1.04)}
-}
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffe28a;
+      box-shadow: 0 0 12px #ffe28a;
+      animation: rise linear infinite;
+      opacity: .8;
+    }
 
-/* ---------- Buttons ---------- */
+    @keyframes rise {
+      from {
+        transform: translateY(110vh) scale(.4);
+        opacity: 0;
+      }
 
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-top:25px;
-}
+      15% {
+        opacity: .8;
+      }
 
-button{
-  border:0;
-  cursor:pointer;
-  color:#21002f;
-  font-weight:800;
-  font-size:16px;
-  padding:14px 24px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#ffd86b,#fff0a7);
-  box-shadow:0 8px 25px rgba(255,216,107,.25);
-  transition:.25s;
-}
+      85% {
+        opacity: .8;
+      }
 
-button:hover{
-  transform:translateY(-3px) scale(1.03);
-}
+      to {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
 
-button:active{
-  transform:scale(.96);
-}
+    /* =========================
+       NAVBAR
+    ========================== */
 
-.secondary{
-  color:white;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:none;
-}
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
 
-/* ---------- Diyas ---------- */
+      z-index: 1000;
 
-.diyas{
-  position:absolute;
-  bottom:20px;
-  left:0;
-  right:0;
-  display:flex;
-  justify-content:space-around;
-  font-size:45px;
-  opacity:.9;
-}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-.diya{
-  animation:diya 1.5s ease-in-out infinite alternate;
-  filter:drop-shadow(0 0 12px orange);
-}
+      padding: 15px 6%;
 
-@keyframes diya{
-  from{transform:scale(1) rotate(-2deg)}
-  to{transform:scale(1.08) rotate(2deg)}
-}
+      background: rgba(4, 6, 20, .55);
+      backdrop-filter: blur(18px);
 
-/* ---------- Floating Flowers ---------- */
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
 
-.flower{
-  position:fixed;
-  top:-40px;
-  font-size:25px;
-  pointer-events:none;
-  animation:fall linear forwards;
-}
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffd765;
+    }
 
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:.1;
-  }
-}
+    .nav-btn {
+      border: 1px solid rgba(255,215,101,.35);
+      background: rgba(255,255,255,.06);
+      color: white;
 
-/* ---------- Message ---------- */
+      padding: 9px 15px;
+      border-radius: 50px;
 
-.message{
-  margin-top:25px;
-  min-height:30px;
-  font-size:20px;
-  font-weight:700;
-  color:#ffe28a;
-}
+      cursor: pointer;
+      transition: .3s;
+    }
 
-/* ---------- Info ---------- */
+    .nav-btn:hover {
+      background: rgba(255,215,101,.15);
+      transform: translateY(-2px);
+    }
 
-.info{
-  margin-top:35px;
-  padding-top:25px;
-  border-top:1px solid rgba(255,255,255,.12);
-  font-size:14px;
-  opacity:.75;
-}
+    /* =========================
+       HERO
+    ========================== */
 
-/* ---------- Mobile ---------- */
+    .hero {
+      position: relative;
+      z-index: 2;
 
-@media(max-width:600px){
-  .app{
-    padding:12px;
-  }
+      min-height: 100vh;
 
-  .card{
-    min-height:690px;
-    padding:35px 18px;
-    border-radius:28px;
-  }
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  .feather{
-    transform:scale(.8) rotate(-8deg);
-    margin-bottom:0;
-  }
+      text-align: center;
 
-  h1{
-    font-size:43px;
-  }
+      padding: 110px 20px 70px;
+    }
 
-  .subtitle{
-    font-size:16px;
-  }
+    .hero-content {
+      max-width: 900px;
+    }
 
-  .krishna{
-    font-size:70px;
-  }
+    .peacock {
+      font-size: clamp(55px, 12vw, 100px);
 
-  .diyas{
-    font-size:32px;
-  }
-}
-</style>
+      filter:
+        drop-shadow(0 0 25px rgba(63,168,255,.5));
+
+      animation:
+        featherFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes featherFloat {
+      0%,100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(3deg);
+      }
+    }
+
+    .small-title {
+      margin-top: 12px;
+
+      color: #ffd968;
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-top: 12px;
+
+      font-size: clamp(42px, 9vw, 90px);
+      line-height: 1.05;
+
+      background:
+        linear-gradient(
+          120deg,
+          #fff4bb,
+          #ffd04d,
+          #fff,
+          #ffca3d
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+
+      text-shadow:
+        0 0 35px rgba(255,205,70,.15);
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 25px auto;
+
+      font-size: clamp(16px, 3vw, 21px);
+      line-height: 1.8;
+
+      color: #d7dcf7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+
+      padding: 14px 22px;
+      border-radius: 50px;
+
+      font-size: 16px;
+      font-weight: 800;
+
+      transition:
+        transform .3s,
+        box-shadow .3s;
+    }
+
+    .btn-primary {
+      color: #241600;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff0a5,
+          #ffc936
+        );
+
+      box-shadow:
+        0 10px 35px rgba(255,201,54,.25);
+    }
+
+    .btn-secondary {
+      color: white;
+
+      background: rgba(255,255,255,.07);
+
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* =========================
+       DIVIDER
+    ========================== */
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 14px;
+
+      color: #ffd45c;
+
+      margin: 15px 0 45px;
+    }
+
+    .divider span {
+      width: 70px;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #ffd45c
+        );
+    }
+
+    .divider span:last-child {
+      background:
+        linear-gradient(
+          90deg,
+          #ffd45c,
+          transparent
+        );
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+      position: relative;
+      z-index: 2;
+
+      padding: 80px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 5vw, 48px);
+      color: #ffe28a;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #aeb6dd;
+      margin: 12px auto 40px;
+      max-width: 650px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       COUNTDOWN
+    ========================== */
+
+    .countdown {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(70px, 150px));
+
+      justify-content: center;
+      gap: 14px;
+
+      margin-top: 35px;
+    }
+
+    .time-card {
+      padding: 22px 12px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.1),
+          rgba(255,255,255,.035)
+        );
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+
+      backdrop-filter: blur(15px);
+    }
+
+    .time-number {
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 900;
+      color: #ffd65a;
+    }
+
+    .time-label {
+      margin-top: 5px;
+      color: #b9c0df;
+      font-size: 13px;
+    }
+
+    /* =========================
+       MAKHAN CHOR
+    ========================== */
+
+    .glass-card {
+      max-width: 900px;
+      margin: auto;
+
+      padding: clamp(25px, 6vw, 55px);
+
+      text-align: center;
+
+      border-radius: 35px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.10),
+          rgba(255,255,255,.035)
+        );
+
+      border: 1px solid rgba(255,255,255,.12);
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.25);
+
+      backdrop-filter: blur(20px);
+    }
+
+    .makhan-icon {
+      font-size: 70px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .glass-card h3 {
+      margin: 15px 0;
+      font-size: 32px;
+      color: #ffe08a;
+    }
+
+    .glass-card p {
+      color: #cbd1ed;
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    /* =========================
+       WISH GENERATOR
+    ========================== */
+
+    .wish-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .wish-output {
+      min-height: 130px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      margin-bottom: 25px;
+
+      border-radius: 25px;
+
+      background: rgba(255,255,255,.06);
+
+      border: 1px solid rgba(255,215,101,.15);
+
+      color: #fff0b0;
+
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       QUOTE
+    ========================== */
+
+    .quote {
+      max-width: 800px;
+      margin: auto;
+
+      text-align: center;
+
+      padding: 45px 25px;
+
+      border-radius: 30px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,211,86,.09),
+          transparent 70%
+        );
+    }
+
+    .quote-symbol {
+      font-size: 55px;
+      color: #ffd65c;
+    }
+
+    .quote-text {
+      margin-top: 15px;
+
+      font-size: clamp(21px, 4vw, 30px);
+      line-height: 1.7;
+
+      color: #fff;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      position: relative;
+      z-index: 2;
+
+      padding: 40px 20px 55px;
+
+      text-align: center;
+
+      border-top: 1px solid rgba(255,255,255,.07);
+
+      color: #8e96ba;
+    }
+
+    footer strong {
+      color: #ffd65c;
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    #toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform:
+        translate(-50%, 100px);
+
+      z-index: 10000;
+
+      padding: 13px 20px;
+
+      border-radius: 50px;
+
+      background: #111735;
+      border: 1px solid rgba(255,255,255,.13);
+
+      color: white;
+
+      box-shadow: 0 10px 40px rgba(0,0,0,.4);
+
+      transition: .35s;
+    }
+
+    #toast.show {
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 600px) {
+
+      .navbar {
+        padding: 13px 18px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .countdown {
+        grid-template-columns:
+          repeat(2, minmax(100px, 145px));
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+
+      .time-card {
+        padding: 18px 8px;
+      }
+
+      .glass-card {
+        border-radius: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="sky" id="sky"></div>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-feather">🦚</div>
+    <div class="loader-text">राधे राधे</div>
+    <div class="loader-line"></div>
+  </div>
 
-<main class="app">
-  <section class="card">
+  <!-- PARTICLES -->
+  <div class="particles" id="particles"></div>
 
-    <div class="glow"></div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="brand">🦚 श्री कृष्ण</div>
 
-    <div class="feather"></div>
+    <button class="nav-btn" onclick="sharePage()">
+      ↗ Share
+    </button>
+  </nav>
 
-    <div class="small-title">
-      🪷 दिव्य उत्सव 🪷
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="peacock">🦚</div>
+
+        <div class="small-title">
+          प्रेम • भक्ति • आनंद
+        </div>
+
+        <h1>
+          शुभ जन्माष्टमी
+        </h1>
+
+        <p class="subtitle">
+          नंद के आनंद भयो, जय कन्हैया लाल की।
+          भगवान श्री कृष्ण की कृपा आपके जीवन में
+          प्रेम, शांति, सुख और समृद्धि लेकर आए।
+        </p>
+
+        <div class="hero-buttons">
+
+          <button
+            class="btn btn-primary"
+            onclick="scrollToSection('wishes')">
+            ✨ शुभकामना भेजें
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            onclick="scrollToSection('countdown')">
+            ⏳ Countdown
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- COUNTDOWN -->
+
+    <section id="countdown">
+
+      <div class="divider">
+        <span></span>
+        🪷
+        <span></span>
+      </div>
+
+      <h2 class="section-title">
+        जन्माष्टमी Countdown
+      </h2>
+
+      <p class="section-subtitle">
+        कान्हा के जन्मोत्सव के पावन क्षण का इंतज़ार।
+      </p>
+
+      <div class="countdown">
+
+        <div class="time-card">
+          <div class="time-number" id="days">00</div>
+          <div class="time-label">दिन</div>
+        </div>
+
+        <div class="time-card">
+          <div class="time-number" id="hours">00</div>
+          <div class="time-label">घंटे</div>
+        </div>
+
+        <div class="time-card">
+          <div class="time-number" id="minutes">00</div>
+          <div class="time-label">मिनट</div>
+        </div>
+
+        <div class="time-card">
+          <div class="time-number" id="seconds">00</div>
+          <div class="time-label">सेकंड</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MAKHAN CHOR -->
+
+    <section>
+
+      <div class="glass-card">
+
+        <div class="makhan-icon">🪷</div>
+
+        <h3>
+          माखन चोर कान्हा 💙
+        </h3>
+
+        <p>
+          जिनकी मुस्कान में संसार की सारी खुशियाँ हैं,
+          जिनकी बांसुरी में प्रेम की मधुर धुन है,
+          और जिनका नाम लेते ही मन को शांति मिलती है—
+          ऐसे श्री कृष्ण को कोटि-कोटि प्रणाम।
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- WISH GENERATOR -->
+
+    <section id="wishes">
+
+      <h2 class="section-title">
+        अपनी शुभकामना बनाएं ✨
+      </h2>
+
+      <p class="section-subtitle">
+        एक क्लिक में अपने प्रियजनों के लिए
+        कृष्ण जन्माष्टमी की सुंदर शुभकामना तैयार करें।
+      </p>
+
+      <div class="wish-box">
+
+        <div class="wish-output" id="wishOutput">
+          🦚 राधे राधे! शुभ जन्माष्टमी! 🦚
+        </div>
+
+        <button
+          class="btn btn-primary"
+          onclick="generateWish()">
+          💫 नई शुभकामना
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          onclick="shareWish()">
+          📤 Share Wish
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- QUOTE -->
+
+    <section>
+
+      <div class="quote">
+
+        <div class="quote-symbol">“</div>
+
+        <div class="quote-text">
+          जहाँ प्रेम है, वहाँ कृष्ण हैं;
+          जहाँ कृष्ण हैं, वहाँ आनंद है।
+        </div>
+
+        <div class="quote-symbol">”</div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      🦚 <strong>जय श्री कृष्ण</strong> 🦚
     </div>
 
-    <h1>
-      श्री कृष्ण<br>
-      जन्माष्टमी
-    </h1>
-
-    <p class="subtitle">
-      प्रेम, भक्ति और आनंद के इस पावन पर्व पर
-      भगवान श्री कृष्ण का आशीर्वाद आपके जीवन को
-      खुशियों से भर दे। 💙
+    <p style="margin-top:10px;">
+      प्रेम और भक्ति के साथ जन्माष्टमी की हार्दिक शुभकामनाएँ।
     </p>
 
-    <div class="krishna">
-      🪈
-    </div>
+  </footer>
 
-    <div class="buttons">
+  <!-- TOAST -->
 
-      <button onclick="celebrate()">
-        ✨ उत्सव मनाएँ
-      </button>
-
-      <button class="secondary" onclick="showMessage()">
-        💙 एक संदेश
-      </button>
-
-    </div>
-
-    <div class="message" id="message"></div>
-
-    <div class="info">
-      🦚 राधे राधे • जय श्री कृष्ण 🦚
-    </div>
-
-    <div class="diyas">
-      <div class="diya">🪔</div>
-      <div class="diya">🪔</div>
-      <div class="diya">🪔</div>
-      <div class="diya">🪔</div>
-      <div class="diya">🪔</div>
-    </div>
-
-  </section>
-</main>
-
-<script>
-
-/* ---------- Stars ---------- */
-
-const sky = document.getElementById("sky");
-
-for(let i=0;i<100;i++){
-
-  const star=document.createElement("div");
-
-  star.className="star";
-
-  star.style.left=Math.random()*100+"%";
-  star.style.top=Math.random()*100+"%";
-
-  star.style.animationDelay=(Math.random()*3)+"s";
-
-  const size=Math.random()*3+1;
-
-  star.style.width=size+"px";
-  star.style.height=size+"px";
-
-  sky.appendChild(star);
-}
+  <div id="toast"></div>
 
 
-/* ---------- Flowers ---------- */
+  <script>
 
-const flowers=["🌸","🌺","🌼","🪷","✨"];
+    /* =========================
+       LOADER
+    ========================== */
 
-function createFlower(){
+    window.addEventListener("load", () => {
 
-  const flower=document.createElement("div");
+      setTimeout(() => {
+        document
+          .getElementById("loader")
+          .classList.add("hide");
+      }, 900);
 
-  flower.className="flower";
-
-  flower.innerHTML=
-    flowers[Math.floor(Math.random()*flowers.length)];
-
-  flower.style.left=Math.random()*100+"%";
-
-  flower.style.animationDuration=
-    (Math.random()*5+5)+"s";
-
-  flower.style.fontSize=
-    (Math.random()*18+18)+"px";
-
-  document.body.appendChild(flower);
-
-  setTimeout(()=>{
-    flower.remove();
-  },10000);
-}
-
-setInterval(createFlower,700);
-
-
-/* ---------- Celebration ---------- */
-
-function celebrate(){
-
-  const message=document.getElementById("message");
-
-  message.innerHTML="🦚 जय श्री कृष्ण! 🦚";
-
-  for(let i=0;i<90;i++){
-
-    const particle=document.createElement("div");
-
-    particle.innerHTML=
-      ["✨","🌸","🪷","💙","🦚","⭐"]
-      [Math.floor(Math.random()*6)];
-
-    particle.style.position="fixed";
-
-    particle.style.left="50%";
-    particle.style.top="50%";
-
-    particle.style.fontSize=
-      (Math.random()*20+12)+"px";
-
-    particle.style.pointerEvents="none";
-
-    particle.style.zIndex="9999";
-
-    document.body.appendChild(particle);
-
-    const angle=Math.random()*Math.PI*2;
-    const distance=Math.random()*350+100;
-
-    const x=Math.cos(angle)*distance;
-    const y=Math.sin(angle)*distance;
-
-    particle.animate([
-      {
-        transform:"translate(-50%,-50%) scale(1)",
-        opacity:1
-      },
-      {
-        transform:
-          `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.2)`,
-        opacity:0
-      }
-    ],{
-      duration:1200+Math.random()*700,
-      easing:"cubic-bezier(.2,.8,.3,1)"
     });
 
-    setTimeout(()=>{
-      particle.remove();
-    },2200);
-  }
-}
 
+    /* =========================
+       PARTICLES
+    ========================== */
 
-/* ---------- Message ---------- */
+    const particleContainer =
+      document.getElementById("particles");
 
-function showMessage(){
+    for (let i = 0; i < 35; i++) {
 
-  const messages=[
-    "💙 जहाँ प्रेम है, वहाँ श्री कृष्ण हैं।",
-    "🦚 मुस्कुराते रहिए और राधे राधे कहते रहिए।",
-    "🪷 भक्ति में ही सच्चा आनंद है।",
-    "✨ श्री कृष्ण आपके जीवन में सुख और शांति लाएँ।",
-    "🪈 प्रेम से बोलो — जय श्री कृष्ण!"
-  ];
+      const p =
+        document.createElement("div");
 
-  const box=document.getElementById("message");
+      p.className = "particle";
 
-  box.innerHTML=
-    messages[Math.floor(Math.random()*messages.length)];
-}
+      p.style.left =
+        Math.random() * 100 + "%";
 
+      p.style.animationDuration =
+        (6 + Math.random() * 8) + "s";
 
-/* ---------- Click Ripple ---------- */
+      p.style.animationDelay =
+        (-Math.random() * 10) + "s";
 
-document.addEventListener("click",(e)=>{
+      p.style.transform =
+        `scale(${0.4 + Math.random()})`;
 
-  const ripple=document.createElement("div");
-
-  ripple.style.position="fixed";
-  ripple.style.left=e.clientX+"px";
-  ripple.style.top=e.clientY+"px";
-  ripple.style.width="10px";
-  ripple.style.height="10px";
-  ripple.style.border="2px solid white";
-  ripple.style.borderRadius="50%";
-  ripple.style.pointerEvents="none";
-  ripple.style.zIndex="9999";
-
-  document.body.appendChild(ripple);
-
-  ripple.animate([
-    {
-      transform:"translate(-50%,-50%) scale(1)",
-      opacity:.8
-    },
-    {
-      transform:"translate(-50%,-50%) scale(8)",
-      opacity:0
+      particleContainer.appendChild(p);
     }
-  ],{
-    duration:600
-  });
 
-  setTimeout(()=>ripple.remove(),600);
 
-});
+    /* =========================
+       SMOOTH SCROLL
+    ========================== */
 
-</script>
+    function scrollToSection(id) {
 
-</body>
-  </html>
+      const element =
+        document.getElementById(id);
+
+      if (element) {
+
+        element.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+
+    /* =========================
+       COUNTDOWN
+    ========================== */
+
+    function getNextJanmashtami() {
+
+      const now = new Date();
+
+      let year = now.getFullYear();
+
+      // Janmashtami 2026:
+      // 4 September 2026
+      // Future years can be adjusted here.
+
+      let target =
+        new Date(
+          `September 4, ${year} 23:59:59`
+        );
+
+      if (target <= now) {
+
+        target =
+          new Date(
+            `August 25, ${year + 1} 23:59:59`
+          );
+
+      }
+
+      return target;
+    }
+
+
+    let targetDate =
+      getNextJanmashtami();
+
+
+    function updateCountdown() {
+
+      const now = new Date();
+
+      let difference =
+        targetDate - now;
+
+      if (difference < 0) {
+
+        targetDate =
+          getNextJanmashtami();
+
+        difference =
+          targetDate - now;
+      }
+
+      const days =
+        Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        );
+
+      const hours =
+        Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        );
+
+      const minutes =
+        Math.floor(
+          (difference / (1000 * 60)) % 60
+        );
+
+      const seconds =
+        Math.floor(
+          (difference / 1000) % 60
+        );
+
+      document.getElementById("days")
+        .textContent =
+        String(days).padStart(2, "0");
+
+      document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+      document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+      document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* =========================
+       WISH GENERATOR
+    ========================== */
+
+    const wishes = [
+
+      "🦚 नंद के घर आनंद भयो, जय कन्हैया लाल की! आपको और आपके परिवार को शुभ जन्माष्टमी!",
+
+      "💙 श्री कृष्ण की कृपा आपके जीवन को प्रेम, शांति और खुशियों से भर दे। शुभ जन्माष्टमी!",
+
+      "🪷 राधे-राधे! कान्हा आपके हर दुख को दूर करें और जीवन में सुख-समृद्धि प्रदान करें।",
+
+      "✨ मुरलीधर आपके जीवन में प्रेम की मधुर धुन और खुशियों के रंग भर दें। जय श्री कृष्ण!",
+
+      "🌸 श्री कृष्ण जन्माष्टमी के पावन पर्व पर आपको और आपके परिवार को हार्दिक शुभकामनाएँ!",
+
+      "🙏 कान्हा का आशीर्वाद सदा आपके साथ रहे। आपके घर में सुख, शांति और समृद्धि बनी रहे।",
+
+      "🦚 गोविंद के नाम से हर दिन मंगलमय हो। आपको जन्माष्टमी की ढेरों शुभकामनाएँ!"
+    ];
+
+
+    function generateWish() {
+
+      const randomIndex =
+        Math.floor(
+          Math.random() * wishes.length
+        );
+
+      document.getElementById("wishOutput")
+        .textContent =
+        wishes[randomIndex];
+
+    }
+
+
+    /* =========================
+       SHARE PAGE
+    ========================== */
+
+    async function sharePage() {
+
+      const shareData = {
+
+        title: "शुभ जन्माष्टमी 🦚",
+
+        text:
+          "श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ! 🦚💙",
+
+        url: window.location.href
+
+      };
+
+      try {
+
+        if (navigator.share) {
+
+          await navigator.share(shareData);
+
+        } else {
+
+        
